@@ -1,5 +1,6 @@
 package org.example.domain.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import java.util.Set;
 
@@ -49,6 +50,7 @@ public class Client {
         this.name = name;
     }
 
+    @JsonIgnore
     public Set<Demmand> getDemands() {
         return demmands;
     }

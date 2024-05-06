@@ -2,12 +2,9 @@ package org.example.rest.controller;
 
 import org.example.domain.entity.Client;
 import org.example.domain.repository.ClientRepository;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.Optional;
 
 @Controller
@@ -17,6 +14,13 @@ public class ClientController {
 
     public ClientController(ClientRepository clientRepository) {
         this.clientRepository = clientRepository;
+    }
+
+    @PostMapping("/api/clients")
+    @ResponseBody
+    public ResponseEntity save( @RequestBody Client client){
+        Client clientSave = clientRepository.save(client);
+        return ResponseEntity.ok(clientSave);
     }
 
     @GetMapping("/api/clients/{id}")

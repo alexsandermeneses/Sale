@@ -1,8 +1,6 @@
 package org.example.domain.entity;
 
 import jakarta.persistence.*;
-
-import javax.print.attribute.standard.MediaSize;
 import java.math.BigDecimal;
 
 @Entity
