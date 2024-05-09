@@ -6,12 +6,9 @@ import org.springframework.data.domain.Example;
 import org.springframework.data.domain.ExampleMatcher;
 import org.springframework.data.domain.ExampleMatcher.StringMatcher;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
-
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/clients")
@@ -32,7 +29,7 @@ public class ClientController {
     @PutMapping("{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void update(@PathVariable Integer id,
-                                 @RequestBody Client client){
+                       @RequestBody Client client){
         clientRepository
                 .findById(id)
                 .map(clientExist -> {
@@ -45,7 +42,7 @@ public class ClientController {
     }
 
     @GetMapping
-    public List<Client> find(Client filter){
+    public List<Client> findAll(Client filter){
         ExampleMatcher exampleMatcher = ExampleMatcher
                 .matching()
                 .withIgnoreCase()
@@ -69,10 +66,7 @@ public class ClientController {
                 .map(client -> {
                     clientRepository.delete(client);
                     return client;
-                })
-                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND,
+                }).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND,
                         "Customer not found"));
-
-
     }
 }
