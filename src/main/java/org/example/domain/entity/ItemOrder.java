@@ -6,6 +6,7 @@ import lombok.*;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+
 @Entity
 @Table(name = "item_order")
 public class ItemOrder {
