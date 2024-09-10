@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.example.domain.entity.enums.Status;
 
 import java.math.BigDecimal;
 import java.util.List;
@@ -19,5 +20,6 @@ public class InformationDemandDTO {
     private String clientName;
     private BigDecimal total;
     private String dataOrder;
+    private String status;
     private List<InformationItemDemandDTO> items;
 }

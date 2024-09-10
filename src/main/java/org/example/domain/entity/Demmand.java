@@ -2,6 +2,8 @@ package org.example.domain.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
+import org.example.domain.entity.enums.Status;
+
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.List;
@@ -28,6 +30,10 @@ public class Demmand {
 
     @Column(name = "total_demand", precision = 20, scale = 2)
     private BigDecimal totalDemmand;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "status")
+    private Status statusDemand;
 
     @OneToMany(mappedBy = "demmand")
     private List<ItemOrder> itemOrders;

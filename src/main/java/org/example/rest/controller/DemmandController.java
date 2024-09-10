@@ -50,6 +50,7 @@ public class DemmandController {
                 .cpf(demmand.getClient().getCpf())
                 .clientName(demmand.getClient().getName())
                 .total(demmand.getTotalDemmand())
+                .status(demmand.getStatusDemand().name())
                 .items(convert(demmand.getItemOrders()))
                 .build();
     }

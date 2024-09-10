@@ -6,6 +6,7 @@ import org.example.domain.entity.Client;
 import org.example.domain.entity.Demmand;
 import org.example.domain.entity.ItemOrder;
 import org.example.domain.entity.Product;
+import org.example.domain.entity.enums.Status;
 import org.example.domain.repository.ClientRepository;
 import org.example.domain.repository.DemmandRepository;
 import org.example.domain.repository.ItemOrderRepository;
@@ -42,6 +43,7 @@ public class DemmandServiceImpl implements DemmandService {
         demmand.setTotalDemmand(demmandDTO.getTotal());
         demmand.setDataDemmand(LocalDate.now());
         demmand.setClient(client);
+        demmand.setStatusDemand(Status.COMPLETED);
 
         List<ItemOrder> itemOrders = convertItems(demmand, demmandDTO.getItemsOrderDTOS());
         demmandRepository.save(demmand);
