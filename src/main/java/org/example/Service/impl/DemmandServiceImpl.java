@@ -18,6 +18,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -47,6 +48,11 @@ public class DemmandServiceImpl implements DemmandService {
         itemOrderRepository.saveAll(itemOrders);
         demmand.setItemOrders(itemOrders);
         return demmand;
+    }
+
+    @Override
+    public Optional<Demmand> getFullOrder(Integer id) {
+        return demmandRepository.findByIdFetchItemOrders(id);
     }
 
     private List<ItemOrder> convertItems(Demmand demmand, List<ItemsOrderDTO> items){
